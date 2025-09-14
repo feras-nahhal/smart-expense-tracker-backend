@@ -326,3 +326,4 @@ def detect_anomaly(db, user_id, category, amount):
         return True
 
     return False
+ 
