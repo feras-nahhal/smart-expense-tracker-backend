@@ -9,6 +9,7 @@ from .nlp import detect_anomaly, predict_monthly_total
 from .models import Goal
 from .schemas import GoalCreate, ExpenseQuick
 from .models import Category
+
 from collections import defaultdict
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
@@ -183,7 +184,7 @@ def get_user_budgets(db: Session, user_id: int) -> dict:
 
 def get_budget_recommendation(db: Session, user_id: int) -> str:
     """Generate budget optimization advice based on user spending."""
-    budgets = get_user_budgets(db, user_id)  
+    budgets = get_user_budgets(db, user_id)  # ✅ now works
     totals = get_monthly_totals(db, user_id) # {category: spent}
 
     if not budgets:
@@ -486,7 +487,7 @@ def add_expense_quick(db: Session, expense):
 # -----------------------------
 # Import expenses from CSV file (Improved & Flexible Dates)
 # -----------------------------
-from dateutil import parser as date_parser  
+from dateutil import parser as date_parser  # ✅ add this import at the top
 
 def import_csv(db: Session, user_id: int, file_bytes: bytes, alert_callback=None):
     """
