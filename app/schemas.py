@@ -29,19 +29,19 @@ class ExpenseOut(BaseModel):
     id: int
     user_id: int
     amount: float = Field(..., ge=0)
-    category_id: int  
+    category_id: int  # ✅ foreign key now
     description: str | None = None
     date: datetime
     merchant: str | None = None
 
     class Config:
-        from_attributes = True  
+        from_attributes = True  # ✅ Pydantic v2 fix
 
 
 class ExpenseQuick(BaseModel):
     user_id: int
-    amount: float = Field(..., gt=0, lt=100000)  
-    category: str   
+    amount: float = Field(..., gt=0, lt=100000)  # ✅ between 0 and 100k
+    category: str   # ✅ accept plain category name
     description: str | None = None
     merchant: str | None = None
 
@@ -51,16 +51,16 @@ class ExpenseQuick(BaseModel):
 # -----------------------------
 class GoalCreate(BaseModel):
     user_id: int
-    category: str   
+    category: str   # ✅ accept plain text name
     target_amount: float = Field(..., ge=0)
-    period: constr(pattern="^(monthly|weekly)$")  
+    period: constr(pattern="^(monthly|weekly)$")  # ✅ only monthly/weekly allowed
 
 
 class GoalOut(GoalCreate):
     id: int
 
     class Config:
-        from_attributes = True  
+        from_attributes = True  # ✅ Pydantic v2 fix
 
 
 # -----------------------------
@@ -97,5 +97,7 @@ class ChatHistoryOut(ChatHistoryBase):
 
     class Config:
         orm_mode = True
+
+
 
 
