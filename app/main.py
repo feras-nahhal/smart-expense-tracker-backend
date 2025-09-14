@@ -23,7 +23,7 @@ app = FastAPI(title="Smart Expense Tracker API")
 # -----------------------------
 # CORS
 # -----------------------------
-origins = ["http://localhost:3000", "http://127.0.0.1:3000","https://smart-expense-tracker-frontend.vercel.app","https://smart-expense-tracker-frontend-mhmfkj4w5.vercel.app"]
+origins = ["http://localhost:3000", "http://127.0.0.1:3000","https://smart-expense-tracker-frontend.vercel.app"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
