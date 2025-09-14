@@ -2,6 +2,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 # SQLite database
 SQLALCHEMY_DATABASE_URL = "sqlite:///./expenses.db"
 
