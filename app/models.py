@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, fun
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
-
+ 
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
