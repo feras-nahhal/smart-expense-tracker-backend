@@ -9,7 +9,6 @@ from .nlp import detect_anomaly, predict_monthly_total
 from .models import Goal
 from .schemas import GoalCreate, ExpenseQuick
 from .models import Category
-
 from collections import defaultdict
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
